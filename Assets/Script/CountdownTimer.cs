@@ -9,8 +9,8 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] private GameController gameController;
     [SerializeField] private LineSpawner spawner;
 
-    private float currentTime;
-    private bool isRunning = false;
+    public float currentTime;
+    public bool isRunning = false;
 
     private void Update()
     {
@@ -28,6 +28,15 @@ public class CountdownTimer : MonoBehaviour
         currentTime = startTime; // **カウントをリセット**
         isRunning = true;
         UpdateTimerUI();
+    }
+
+    /// <summary>
+    /// **タイマーを停止する（外部から呼び出し可能）**
+    /// </summary>
+    public void StopTimer()
+    {
+        isRunning = false;
+        Debug.Log("stop");
     }
 
     /// <summary>
@@ -63,7 +72,6 @@ public class CountdownTimer : MonoBehaviour
     {
         Debug.Log("タイマー終了！");
         gameController.bonusPoints.Clear();
-        // **ここで別の処理を呼び出す（必要なら変更）**
         spawner.SpawnObjectsFromTriangleLayer();
     }
 }

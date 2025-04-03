@@ -9,6 +9,7 @@ public class LineSpawner : MonoBehaviour
     public Button spawnButton; // ƒ{ƒ^ƒ“‚ðInspector‚ÅŽw’è
 
     [SerializeField] private GameController gameController;
+    [SerializeField] private CountdownTimer timer;
 
     void Start()
     {
@@ -21,6 +22,7 @@ public class LineSpawner : MonoBehaviour
 
     public void SpawnObjectsFromTriangleLayer()//line‚ðclone
     {
+        timer.StopTimer();
         GameObject[] triangleObjects = FindObjectsOfType<GameObject>();
 
         foreach (GameObject obj in triangleObjects)

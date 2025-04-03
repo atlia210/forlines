@@ -39,5 +39,9 @@ public class LineCircleDistance : MonoBehaviour
         {
             gameController.bonusPoints[bonusPointIndex] = bonusValue;
         }
+        else if (bonusValue > 1.5f) 
+        { 
+            gameController.hitline = true;
+        }
     }
 }

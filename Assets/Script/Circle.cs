@@ -15,7 +15,6 @@ public class Circle : MonoBehaviour
 
     private Vector2 error;
     private Rigidbody2D rb;
-    private bool isDragging = false;
     private Vector2 targetPos; // ˆÊ’u‚ğ•Û‘¶
 
     private void Start()
@@ -26,7 +25,6 @@ public class Circle : MonoBehaviour
     private void OnMouseDown()
     {
         error = (Vector2)transform.position - (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        isDragging = true;
     }
 
     private void OnMouseDrag()
@@ -57,10 +55,7 @@ public class Circle : MonoBehaviour
         }
     }
 
-    private void OnMouseUp()
-    {
-        isDragging = false;
-    }
+    
 
     /// <summary>
     /// w’è‚µ‚½À•W‚ğ‹«ŠE‰~“à‚Éû‚ß‚é

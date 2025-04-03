@@ -12,6 +12,7 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] int addrotmin = -15;
     [SerializeField] int addrotmax = 15;
     [SerializeField] CountdownTimer timer;
+    [SerializeField] Circle circle;
 
     [SerializeField] private GameController gameController;
 
@@ -27,10 +28,14 @@ public class ObjectSpawner : MonoBehaviour
 
     void OnButtonClick()
     {
+        circle.dragable = true;
+        gameController.isgame = true;
         DestroyLineLayerObjects();
         generatedNumbers.Clear(); // リストをリセット
         SpawnObject();
         timer.StartTimer();
+        gameController.currentround += 1;
+        gameController.hitline = false;
 
         gameController.bonusPoints.Clear();//ボーナスをリセット
         gameController.bonusPoint = 1f;
