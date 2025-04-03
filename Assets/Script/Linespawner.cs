@@ -8,15 +8,18 @@ public class LineSpawner : MonoBehaviour
     public GameObject objectToClone; // Inspectorで指定するクローンするオブジェクト
     public Button spawnButton; // ボタンをInspectorで指定
 
+    [SerializeField] private GameController gameController;
+
     void Start()
     {
         if (spawnButton != null)
         {
+            gameController.bonusPoints.Clear();
             spawnButton.onClick.AddListener(SpawnObjectsFromTriangleLayer);
         }
     }
 
-    void SpawnObjectsFromTriangleLayer()
+    public void SpawnObjectsFromTriangleLayer()//lineをclone
     {
         GameObject[] triangleObjects = FindObjectsOfType<GameObject>();
 
@@ -30,5 +33,6 @@ public class LineSpawner : MonoBehaviour
                 Instantiate(objectToClone, position, Quaternion.Euler(0, 0, rotationZ));
             }
         }
+        gameController.StartCoroutine(gameController.roundend());
     }
 }

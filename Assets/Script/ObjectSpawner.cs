@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,9 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] int n;
     [SerializeField] int addrotmin = -15;
     [SerializeField] int addrotmax = 15;
+    [SerializeField] CountdownTimer timer;
+
+    [SerializeField] private GameController gameController;
 
     [SerializeField] List<int> generatedNumbers = new List<int>();
 
@@ -26,6 +30,11 @@ public class ObjectSpawner : MonoBehaviour
         DestroyLineLayerObjects();
         generatedNumbers.Clear(); // リストをリセット
         SpawnObject();
+        timer.StartTimer();
+
+        gameController.bonusPoints.Clear();//ボーナスをリセット
+        gameController.bonusPoint = 1f;
+        
     }
 
     void SpawnObject()
