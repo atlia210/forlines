@@ -5,6 +5,7 @@ public class LineCircleDistance : MonoBehaviour
     [SerializeField] private GameObject circle; // 円のGameObjectを指定
     private GameController gameController;
     private int bonusPointIndex; // 自分のデータが入る bonusPoints のインデックス
+    private SpriteRenderer spriteRenderer;
 
     private void Start()
     {
@@ -42,6 +43,8 @@ public class LineCircleDistance : MonoBehaviour
         else if (bonusValue > 1.5f) 
         { 
             gameController.hitline = true;
+            spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer.color = new Color32(210, 0, 0, 255); // 赤（RGBA）
         }
     }
 }
