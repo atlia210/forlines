@@ -13,6 +13,8 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] int addrotmax = 15;
     [SerializeField] CountdownTimer timer;
     [SerializeField] Circle circle;
+    [SerializeField] Button activebotton;
+    [SerializeField] Button startbotton;
 
     [SerializeField] private GameController gameController;
 
@@ -36,6 +38,8 @@ public class ObjectSpawner : MonoBehaviour
         timer.StartTimer();
         gameController.currentround += 1;
         gameController.hitline = false;
+        activebotton.gameObject.SetActive(true);
+        startbotton.gameObject.SetActive(false);
 
         gameController.bonusPoints.Clear();//ボーナスをリセット
         gameController.bonusPoint = 1f;

@@ -7,6 +7,7 @@ public class LineSpawner : MonoBehaviour
 {
     public GameObject objectToClone; // Inspectorで指定するクローンするオブジェクト
     public Button spawnButton; // ボタンをInspectorで指定
+    [SerializeField] Button startbotton;
 
     [SerializeField] private GameController gameController;
     [SerializeField] private CountdownTimer timer;
@@ -36,5 +37,7 @@ public class LineSpawner : MonoBehaviour
             }
         }
         gameController.StartCoroutine(gameController.roundend());
+        spawnButton.gameObject.SetActive(false);
+        startbotton.gameObject.SetActive(true);
     }
 }

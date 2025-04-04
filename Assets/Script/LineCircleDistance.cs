@@ -36,13 +36,17 @@ public class LineCircleDistance : MonoBehaviour
 
         // 既存のリストの該当インデックスの値を更新
         float bonusValue = 1.5f - distance;
-        if (bonusValue > 1.0f && bonusValue <=1.5f)
+        if (bonusValue > 1.0f && bonusValue <=1.53f)
         {
             gameController.bonusPoints[bonusPointIndex] = bonusValue;
         }
-        else if (bonusValue > 1.5f) 
+        else if (bonusValue > 1.53f) 
         { 
             gameController.hitline = true;
+            bonusValue= 0.8f - (bonusValue - 1.53f)/1.5f;
+            if (bonusValue < 0f) bonusValue = 0f;
+            gameController.bonusPoints[bonusPointIndex] = bonusValue;
+
             spriteRenderer = GetComponent<SpriteRenderer>();
             spriteRenderer.color = new Color32(210, 0, 0, 255); // 赤（RGBA）
         }
